@@ -1,5 +1,8 @@
 # phase-3-project: Chicago Art Gallery
 
+Demo: https://www.youtube.com/watch?v=FAO6ZUOWgT8
+Hosted Website: https://loopdeluce.github.io/gallery-frontend/
+
 ## Pitch
 
 Login to your user account, browse the art of The Art Institute of Chicago and save your favorites to your account
