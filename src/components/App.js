@@ -13,14 +13,14 @@ function App() {
   const [favorites, setFavorites] = useState([]);
 
   useEffect(() => {
-    fetch("http://127.0.0.1:4200//users")
+    fetch("https://gallery-moose.herokuapp.com/users")
       .then((r) => r.json())
       .then((allUserData) => setAllUsers(allUserData));
     fetchArtwork();
   }, [authenticatedUser]);
 
   function fetchArtwork() {
-    fetch("http://127.0.0.1:4200/artworks")
+    fetch("https://gallery-moose.herokuapp.com/artworks")
       .then((response) => response.json())
       .then((data) => {
         setArtCollection(data);
@@ -34,7 +34,7 @@ function App() {
   function addToFavorites(piece, e) {
     if (e.target.innerText === "♡ Favorite") {
       console.log(authenticatedUser.first_name + " unfavorited " + piece.title);
-      fetch("http://127.0.0.1:4200/favorites", {
+      fetch("https://gallery-moose.herokuapp.com/favorites", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
@@ -47,7 +47,7 @@ function App() {
     if (e.target.innerText === "♥ Favorited") {
       console.log(authenticatedUser.first_name + " favorited " + piece.title);
       fetch(
-        `http://localhost:4200/users/${authenticatedUser.id}/removefavorite`,
+        `https://gallery-moose.herokuapp.com/users/${authenticatedUser.id}/removefavorite`,
         {
           method: "PATCH",
           headers: { "Content-Type": "application/json" },
@@ -64,14 +64,14 @@ function App() {
 
   function fetchUserFavoriteArtworks(authenticatedUser) {
     return fetch(
-      `http://127.0.0.1:4200/users/${authenticatedUser.id}?include_artworks`
+      `https://gallery-moose.herokuapp.com/users/${authenticatedUser.id}?include_artworks`
     )
       .then((response) => response.json())
       .then((userData) => setFavorites(userData.artworks));
   }
 
   function postNewUser(newUser) {
-    fetch("http://127.0.0.1:4200/users", {
+    fetch("https://gallery-moose.herokuapp.com/users", {
       method: "POST",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify(newUser),

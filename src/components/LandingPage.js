@@ -16,7 +16,7 @@ function LandingPage({
   const [artistName, setArtistName] = useState("");
 
   useEffect(() => {
-    fetch("http://127.0.0.1:4200/artworks")
+    fetch("https://gallery-moose.herokuapp.com/artworks")
       .then((response) => response.json())
       .then((data) => {
         setImages(data);
